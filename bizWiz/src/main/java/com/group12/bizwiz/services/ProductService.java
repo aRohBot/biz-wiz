@@ -17,12 +17,12 @@ public class ProductService {
 	private ProductRepository productRepo;
 	
 	//Create
-	public Product create(Product p) {
+	public Product addProduct(Product p) {
 		return productRepo.save(p);
 	}
 
 	//Read
-	public List<Product> all(){
+	public List<Product> allProducts(){
 		return productRepo.findAll();
 	}
 	
@@ -31,17 +31,17 @@ public class ProductService {
 	}
 	
 	//Update
-	public Product update(Product p) {
+	public Product updateProduct(Product p) {
 		return productRepo.save(p);
 	}
 	
 	//Delete
-	public void destroy(Long id) {
+	public void deleteProduct(Long id) {
 		productRepo.deleteById(id);
 	}
 	
 	//VALIDATION
-	public Product validate(Product newProduct, BindingResult result) {
+	public Product validateProduct(Product newProduct, BindingResult result) {
 		Optional<Product> potentialProduct = productRepo.findByDescription(newProduct.getDescription());
 		
 		if(potentialProduct.isPresent()) {

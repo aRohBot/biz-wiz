@@ -16,31 +16,31 @@ public class InvoiceService {
 	private InvoiceRepository invoiceRepo;
 	
 	//Create
-	public Invoice create(Invoice i) {
+	public Invoice addInvoice(Invoice i) {
 		return invoiceRepo.save(i);
 	}
 
 	//Read
-	public List<Invoice> all(){
+	public List<Invoice> allInvoices(){
 		return invoiceRepo.findAll();
 	}
 	
-	public Invoice findProductById(Long id) {
+	public Invoice findInvoiceById(Long id) {
 		return invoiceRepo.findById(id).orElse(null);
 	}
 	
 	//Update
-	public Invoice update(Invoice i) {
+	public Invoice updateInvoice(Invoice i) {
 		return invoiceRepo.save(i);
 	}
 	
 	//Delete
-	public void destroy(Long id) {
+	public void deleteInvoice(Long id) {
 		invoiceRepo.deleteById(id);
 	}
 	
 	//VALIDATION
-	public Invoice validate(Invoice newProduct, BindingResult result) {
+	public Invoice validateInvoice(Invoice newProduct, BindingResult result) {
 		if(result.hasErrors()) {
 			return null;
 		}

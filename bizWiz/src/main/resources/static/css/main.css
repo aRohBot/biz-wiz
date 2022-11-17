@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+body{
+	background: #124e78;
+	color: #f0f0c9;
+	font-family: Verdana, sans-serif;
+	font-size: 22px;
+}
+
+/*application name*/
+.header-title{
+	font-size: 110px;
+	font-family: 'Bungee';
+	text-shadow: 6px 6px 6px #d74e09;
+	margin-left: 25px;
+}
+.subheader-title{
+	font-size:30px;
+	margin-left: 50px;
+	font-family: 'Bungee';
+	text-shadow: 4px 4px 4px #d74e09;
+	letter-spacing: 5px;
+}
+
+/*navigation bar styling*/
+.navibar{
+	border: 2px solid #F2BB05;
+	border-radius: 5px;
+	list-style-type: none;
+	width:100%;
+}
+.navi-item{
+	display: inline;
+	font-family: 'Bungee';
+	font-size:20px;
+	letter-spacing: 5px;
+	margin-left:80px;
+	margin-right:40px;
+	padding: 10px;
+}
+a:link{
+	text-decoration:none;
+	color: #f0f0c9;
+}
+a:hover {
+	color:#d74e09;
+}
+/*login button styling*/
+.loginbtn{
+	width:250px;
+	background: #F0F0C9;
+	box-shadow: 6px 6px 6px #d74e09;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 5px;
+}
+
+/*add customer*/
+.customer-box{
+	border: 2px solid #F2BB05;
+	border-radius: 5px;
+	padding: 20px;
+	margin-top: 40px;
+}

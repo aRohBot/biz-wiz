@@ -17,40 +17,40 @@ public class CustomerService {
 	private CustomerRepository customerRepo;
 	
 	//Create
-	public Customer create(Customer c) {
+	public Customer addCustomer(Customer c) {
 		return customerRepo.save(c);
 	}
 
 	//Read
-	public List<Customer> all(){
+	public List<Customer> allCustomers(){
 		return customerRepo.findAll();
 	}
 	
-	public Customer findCutomerById(Long id) {
+	public Customer findCustomerById(Long id) {
 		return customerRepo.findById(id).orElse(null);
 	}
 	
 	//Update
-	public Customer update(Customer c) {
+	public Customer updateCustomer(Customer c) {
 		return customerRepo.save(c);
 	}
 	
 	//Delete
-	public void destroy(Long id) {
+	public void deleteCustomer(Long id) {
 		customerRepo.deleteById(id);
 	}
 	
 	//VALIDATION
-	public Customer validate(Customer newCustomer, BindingResult result) {
-		Optional<Customer> potentialCustomer = customerRepo.findBycustomerName(newCustomer.getCustomerName());
+	//public Customer validate(Customer newCustomer, BindingResult result) {
+	//	Optional<Customer> potentialCustomer = customerRepo.findBycustomerName(newCustomer.getCustomerName());
 		
-		if(potentialCustomer.isPresent()) {
-			result.rejectValue("customerName", "Exists","Customer with this  name already exists");
-		}
-		if(result.hasErrors()) {
-			return null;
-		}
-		return newCustomer;
-	}
+	//	if(potentialCustomer.isPresent()) {
+	//		result.rejectValue("customerName", "Exists","Customer with this  name already exists");
+	//	}
+	//	if(result.hasErrors()) {
+	//		return null;
+	//	}
+	//	return newCustomer;
+	//}
 	
 }

@@ -39,9 +39,9 @@ public class User {
     @Size(min=3, max=15, message="Last name must be between 3 and 15 characters")
     private String lastName;
     
-    @NotEmpty(message="Username is required!")
+    @NotEmpty(message="Business Name is required!")
     @Size(min=3, max=30, message="Username must be between 3 and 30 characters")
-    private String userName;
+    private String business;
     
     @NotEmpty(message="Email is required!")
     @Email(message="Please enter a valid email!")
@@ -89,14 +89,14 @@ public class User {
 	public User(Long id,
 			String firstName,
 			String lastName,
-			String userName,
+			String business,
 			String email,
 			String password,
 			String confirm) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.userName = userName;
+		this.business = business;
 		this.email = email;
 		this.password = password;
 		this.confirm = confirm;
@@ -127,12 +127,12 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getBusiness() {
+		return business;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setBusiness(String business) {
+		this.business = business;
 	}
 
 	public String getEmail() {
