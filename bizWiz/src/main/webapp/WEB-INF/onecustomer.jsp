@@ -19,8 +19,6 @@
 </head>
 
 
-
-
 <body>
 	<div class="container">
 		<center><h1 class="subheader-title">CUSTOMER: ${oneCustomerView.customerName}</h1></center>

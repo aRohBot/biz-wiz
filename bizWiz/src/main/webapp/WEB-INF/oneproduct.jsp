@@ -19,10 +19,6 @@
 </head>
 
 
-
-
-
-
 <body>
 	<div class="container">
 		<center><h1 class="subheader-title">PRODUCT SKU# ${oneProductView.skuNumber}</h1></center>
