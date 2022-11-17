@@ -63,9 +63,6 @@
 					<form:errors class="text-danger" path="zip"/>
 					<form:input type="text" class="form-control" path="zip" placeholder="00000"/>
 	  			</div>
-	  			<div class="col-12">
-	    			<button type="submit" class="loginbtn">ADD CUSTOMER</button>
-	  			</div>
 		  		<form:input type="hidden" value ="${loggedInUser.id}" path="user"/>
 				<input type="submit" class="loginbtn" value="ADD"/>
 			</form:form>

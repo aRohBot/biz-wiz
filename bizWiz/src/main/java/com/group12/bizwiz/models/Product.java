@@ -14,6 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -27,14 +30,15 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty
-	private Long skuNumber;
+	@Min(value=100000, message="SKU Number must be 6 digits and greater than 1000000")
+	private Integer skuNumber;
 	
 	@NotEmpty
 	@Size(min= 3, message="Description must be at least 3 characters long")
 	private String description;
 	
-	@NotEmpty
+	@DecimalMin(value="0.0", inclusive=false)
+	@Digits(integer=5, fraction=2)
 	private BigDecimal price;
 
 	@Column(updatable=false)
@@ -62,7 +66,7 @@ public class Product {
     
     //CONSTRUCTORS
     public Product() {}
-	public Product(@NotEmpty Long skuNumber,
+	public Product(@NotEmpty @NotEmpty Integer skuNumber,
 			@NotEmpty @Size(min = 3, message = "Description must be at least 3 characters long") String description,
 			@NotEmpty BigDecimal price) {
 		super();
@@ -78,10 +82,10 @@ public class Product {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Long getSkuNumber() {
+	public Integer getSkuNumber() {
 		return skuNumber;
 	}
-	public void setSkuNumber(Long skuNumber) {
+	public void setSkuNumber(Integer skuNumber) {
 		this.skuNumber = skuNumber;
 	}
 	public String getDescription() {
