@@ -1,5 +1,6 @@
 package com.group12.bizwiz.models;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -27,6 +30,23 @@ public class Invoice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    
+    
+    @GeneratedValue(generator="invoice-number")
+    @GenericGenerator(
+    		name = "invoice-number",
+    		strategy ="org.hibernate.id.enhanced.SequenceStyleGenerator",
+    		parameters = {
+    				@Parameter(name ="initial_value", value="101")
+    				
+    		})
+    private Integer invoiceNum;
+    		
+    		
+    private BigDecimal subtotal;
+    private BigDecimal tax;
+    private BigDecimal total;
     
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="user_id")
@@ -54,40 +74,49 @@ public class Invoice {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
-    
-    //Constructors
-	public Invoice() {}
-	public Invoice(Customer customer) {
+	public Invoice(Long id, Integer invoiceNum, BigDecimal subtotal, BigDecimal tax, BigDecimal total, User user,
+			List<Product> products, Customer customer, Date createdAt, Date updatedAt) {
 		super();
-		this.customer = customer;
-	}
-	public Invoice(User user) {
-		super();
-		this.user = user;
-	}
-	public Invoice(User user, Customer customer) {
-		super();
-		this.user = user;
-		this.customer = customer;
-	}
-	public Invoice(User user, List<Product> products) {
-		super();
-		this.user = user;
-		this.products = products;
-	}
-	public Invoice(User user, List<Product> products, Customer customer) {
-		super();
+		this.id = id;
+		this.invoiceNum = invoiceNum;
+		this.subtotal = subtotal;
+		this.tax = tax;
+		this.total = total;
 		this.user = user;
 		this.products = products;
 		this.customer = customer;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
 	}
-	
-	//GETTERS AND  SETTERS
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public Integer getInvoiceNum() {
+		return invoiceNum;
+	}
+	public void setInvoiceNum(Integer invoiceNum) {
+		this.invoiceNum = invoiceNum;
+	}
+	public BigDecimal getSubtotal() {
+		return subtotal;
+	}
+	public void setSubtotal(BigDecimal subtotal) {
+		this.subtotal = subtotal;
+	}
+	public BigDecimal getTax() {
+		return tax;
+	}
+	public void setTax(BigDecimal tax) {
+		this.tax = tax;
+	}
+	public BigDecimal getTotal() {
+		return total;
+	}
+	public void setTotal(BigDecimal total) {
+		this.total = total;
 	}
 	public User getUser() {
 		return user;
@@ -119,5 +148,8 @@ public class Invoice {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+    
+    
+
 	
 }
