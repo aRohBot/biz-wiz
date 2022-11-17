@@ -22,6 +22,7 @@
 <body>
 	<div class="container">
 		<h1 class="subheader-title"> ACTIVE INVOICES</h1>
+		<div class="table-style">
 		<div class="table-wrapper-scroll-y my-custom-scrollbar">
 			<table class="table table-hover mb-0">
     			<thead>
@@ -63,6 +64,6 @@
 				<input type="submit" class='loginbtn' value="ADD INVOICE">
 			</form:form>
 		</div>
-	</div>
+	</div></div>
 </body>
 </html>

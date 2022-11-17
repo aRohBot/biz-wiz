@@ -258,9 +258,10 @@ public class MainController {
 			}
 			//ADD INVOICE
 			@GetMapping("/bizwiz/invoices/add")
-			public String newInvoice(HttpSession session, @ModelAttribute("newInvoiceView") Invoice i) {
+			public String newInvoice(HttpSession session, Model model, @ModelAttribute("newInvoiceView") Invoice i) {
 				if(session.getAttribute("loggedInUser")!=null) {
-					return "newinvoice.jsp";
+					model.addAttribute("customerSelectView", cServ.allCustomers());
+					return "newinvoice1.jsp";
 				}
 				else {
 					return "redirect:/";
@@ -269,10 +270,10 @@ public class MainController {
 			@PostMapping("/bizwiz/invoices/add")
 			public String addInvoice(@Valid @ModelAttribute("newInvoiceView") Invoice i, BindingResult result) {
 				if(result.hasErrors()) {
-					return "newinvoice.jsp";
+					return "newinvoice1.jsp";
 				} else {
 					iServ.addInvoice(i);
-					return "redirect:/bizwiz/invoices";
+					return "redirect:/bizwiz/invoices/{id}";
 				}
 			}
 			//GET ONE INVOICE
